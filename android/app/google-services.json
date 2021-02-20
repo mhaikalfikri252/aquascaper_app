@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "490073709590",
+    "project_id": "aquascaper-app",
+    "storage_bucket": "aquascaper-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490073709590:android:40ad129177d76dd4306937",
+        "android_client_info": {
+          "package_name": "com.example.aquascaper_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490073709590-o5u1u42fn8t9l8ldbj0s6m47rer6o7h9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aquascaper_app",
+            "certificate_hash": "e8652a26601d84332b1d25cbe64b846bbf7a8ac3"
+          }
+        },
+        {
+          "client_id": "490073709590-2d47vv4cab0qbu6r5nbb9orfb9126hrn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAYNvbxjRyqqh1aEeXrByEa6pdbOqCIcA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490073709590-2d47vv4cab0qbu6r5nbb9orfb9126hrn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
