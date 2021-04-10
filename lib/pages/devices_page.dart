@@ -1,7 +1,4 @@
-import 'package:aquascaper_app/widgets/card_one.dart';
-import 'package:aquascaper_app/widgets/card_two.dart';
-import 'package:aquascaper_app/widgets/main_drawer.dart';
-import 'package:flutter/material.dart';
+part of 'pages.dart';
 
 class DevicesPage extends StatelessWidget {
   @override
@@ -19,6 +16,7 @@ class DevicesPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: ListView(
+            shrinkWrap: true,
             children: [
               Column(
                 children: [
@@ -82,6 +80,16 @@ class DevicesPage extends StatelessWidget {
                         roundColor: Colors.yellow,
                       ),
                     ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Center(
+                    child: CardTwo(
+                      txtTitle: 'Selenoid',
+                      sideColor: Colors.lightBlue,
+                      roundColor: Colors.yellow,
+                    ),
                   ),
                   SizedBox(
                     height: 30,

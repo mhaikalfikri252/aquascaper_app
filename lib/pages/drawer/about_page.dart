@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of 'drawer.dart';
 
 class AboutPage extends StatelessWidget {
   @override

@@ -1,7 +1,4 @@
-import 'package:aquascaper_app/pages/alert_page.dart';
-import 'package:aquascaper_app/pages/devices_page.dart';
-import 'package:aquascaper_app/widgets/main_drawer.dart';
-import 'package:flutter/material.dart';
+part of 'pages.dart';
 
 class HomePage extends StatefulWidget {
   @override

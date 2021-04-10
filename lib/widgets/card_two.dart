@@ -1,3 +1,5 @@
+import 'package:aquascaper_app/widgets/auto_button.dart';
+import 'package:aquascaper_app/widgets/manual_button.dart';
 import 'package:flutter/material.dart';
 
 class CardTwo extends StatelessWidget {
@@ -52,31 +54,11 @@ class CardTwo extends StatelessWidget {
             ),
             Column(
               children: [
-                Container(
-                  width: 65,
-                  height: 30,
-                  child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    onPressed: () {},
-                    child: Text('Auto'),
-                  ),
-                ),
+                SmallButton('Auto'),
                 SizedBox(
                   height: 12,
                 ),
-                Container(
-                  width: 80,
-                  height: 30,
-                  child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    onPressed: () {},
-                    child: Text('Manual'),
-                  ),
-                ),
+                ManualButton('Manual'),
               ],
             )
           ],

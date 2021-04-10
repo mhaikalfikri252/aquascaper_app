@@ -1,5 +1,4 @@
-import 'package:aquascaper_app/widgets/user_text.dart';
-import 'package:flutter/material.dart';
+part of 'auth.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   @override
@@ -22,23 +21,7 @@ class ForgotPasswordPage extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            Container(
-              height: 50,
-              width: 360,
-              child: RaisedButton(
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                color: Colors.blue,
-                elevation: 10,
-                textColor: Colors.white,
-                child: Text(
-                  'Send request email reset',
-                  style: TextStyle(fontSize: 16),
-                ),
-              ),
-            ),
+            Button('Send request email reset')
           ],
         ),
       ),

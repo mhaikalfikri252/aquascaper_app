@@ -1,5 +1,4 @@
-import 'package:aquascaper_app/widgets/main_drawer.dart';
-import 'package:flutter/material.dart';
+part of 'pages.dart';
 
 class AlertPage extends StatelessWidget {
   @override

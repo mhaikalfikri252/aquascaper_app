@@ -1,6 +1,4 @@
-import 'package:aquascaper_app/widgets/password_text.dart';
-import 'package:aquascaper_app/widgets/user_text.dart';
-import 'package:flutter/material.dart';
+part of 'auth.dart';
 
 class RegisterPage extends StatelessWidget {
   @override
@@ -48,23 +46,7 @@ class RegisterPage extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                Container(
-                  height: 50,
-                  width: 360,
-                  child: RaisedButton(
-                    onPressed: () {},
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    color: Colors.blue,
-                    elevation: 10,
-                    textColor: Colors.white,
-                    child: Text(
-                      'Create Account',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ),
-                ),
+               Button('Create Account'),
                 SizedBox(
                   height: 60,
                 ),

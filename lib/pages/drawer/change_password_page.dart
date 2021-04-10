@@ -1,13 +1,9 @@
-import 'package:aquascaper_app/widgets/password_text.dart';
-import 'package:flutter/material.dart';
+part of 'drawer.dart';
 
 class ChangePasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // GlobalKey _scaffold = GlobalKey();
-
     return Scaffold(
-      // key: _scaffold,
       appBar: AppBar(
         title: Text('Change Password'),
       ),
@@ -39,23 +35,7 @@ class ChangePasswordPage extends StatelessWidget {
             SizedBox(
               height: 40,
             ),
-            Container(
-              height: 50,
-              width: 400,
-              child: RaisedButton(
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                color: Colors.blue,
-                elevation: 10,
-                textColor: Colors.white,
-                child: Text(
-                  'Ubah Password',
-                  style: TextStyle(fontSize: 16),
-                ),
-              ),
-            ),
+            Button('Ubah Password'),
           ],
         ),
       ),

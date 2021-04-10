@@ -19,7 +19,6 @@ class _PasswordTextState extends State<PasswordText> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      // autofocus: false,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
         suffixIcon: GestureDetector(
@@ -29,7 +28,6 @@ class _PasswordTextState extends State<PasswordText> {
             color: Colors.blue,
           ),
         ),
-        // isDense: true,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
         ),

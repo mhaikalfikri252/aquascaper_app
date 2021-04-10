@@ -1,3 +1,5 @@
+import 'package:aquascaper_app/chart/day_chart/bar_chart_home_day.dart';
+import 'package:aquascaper_app/chart/time_chart/bar_chart_home_time.dart';
 import 'package:flutter/material.dart';
 
 class Phmeter extends StatelessWidget {
@@ -7,8 +9,18 @@ class Phmeter extends StatelessWidget {
       appBar: AppBar(
         title: Text('pH Meter'),
       ),
-      body: Center(
-        child: Text('pH Meter'),
+      body: ListView(
+        children: [
+          Column(
+            children: [
+              BarChartHomeTime(),
+              SizedBox(
+                height: 20,
+              ),
+              BarChartHomeDay(),
+            ],
+          ),
+        ],
       ),
     );
   }

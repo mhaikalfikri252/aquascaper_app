@@ -1,6 +1,4 @@
-import 'package:aquascaper_app/widgets/password_text.dart';
-import 'package:aquascaper_app/widgets/user_text.dart';
-import 'package:flutter/material.dart';
+part of 'auth.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -39,23 +37,7 @@ class LoginPage extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            Container(
-              height: 50,
-              width: 360,
-              child: RaisedButton(
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                color: Colors.blue,
-                elevation: 10,
-                textColor: Colors.white,
-                child: Text(
-                  'Log In',
-                  style: TextStyle(fontSize: 16),
-                ),
-              ),
-            ),
+            Button('Log In'),
             SizedBox(
               height: 60,
             ),
