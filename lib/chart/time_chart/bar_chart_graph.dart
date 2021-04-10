@@ -34,7 +34,7 @@ class _BarChartGraphState extends State<BarChartGraph> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Text('Time'),
+              Text('Intensitas'),
               SizedBox(
                 height: 20,
               ),
