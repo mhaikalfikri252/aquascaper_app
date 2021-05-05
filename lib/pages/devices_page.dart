@@ -1,4 +1,7 @@
-part of 'pages.dart';
+import 'package:aquascaper_app/widgets/card_one.dart';
+import 'package:aquascaper_app/widgets/card_two.dart';
+import 'package:aquascaper_app/widgets/main_drawer.dart';
+import 'package:flutter/material.dart';
 
 class DevicesPage extends StatelessWidget {
   @override

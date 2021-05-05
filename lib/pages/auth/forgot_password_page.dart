@@ -1,6 +1,14 @@
-part of 'auth.dart';
+import 'package:aquascaper_app/services/auth_services.dart';
+import 'package:flutter/material.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
+class ForgotPasswordPage extends StatefulWidget {
+  @override
+  _ForgotPasswordPageState createState() => _ForgotPasswordPageState();
+}
+
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+  TextEditingController emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,14 +22,45 @@ class ForgotPasswordPage extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            UserText(
-              icon: Icon(Icons.email),
-              text: 'Email',
+            TextFormField(
+              validator: (value) {
+                return emailController.text == value
+                    ? null
+                    : "Masukkan Email Anda";
+              },
+              controller: emailController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                labelText: 'Email',
+                hintText: 'Email',
+              ),
             ),
             SizedBox(
               height: 30,
             ),
-            Button('Send request email reset')
+            Container(
+              height: 50,
+              width: 360,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  elevation: 10,
+                  textStyle: TextStyle(color: Colors.white),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Text(
+                  'Send Request',
+                  style: TextStyle(fontSize: 16),
+                ),
+                onPressed: () async {
+                  await AuthServices.resetEmail(emailController.text);
+                },
+              ),
+            ),
           ],
         ),
       ),

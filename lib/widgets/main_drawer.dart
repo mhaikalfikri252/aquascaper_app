@@ -1,3 +1,4 @@
+import 'package:aquascaper_app/services/auth_services.dart';
 import 'package:aquascaper_app/widgets/drawer_item.dart';
 import 'package:aquascaper_app/widgets/header_drawer.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,9 @@ class MainDrawer extends StatelessWidget {
               DrawerItem(
                 icon: Icons.exit_to_app,
                 text: 'Logout',
-                onTap: () {},
+                onTap: () {
+                  AuthServices.signOut();
+                },
               ),
             ],
           ),

@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "490073709590",
-    "project_id": "aquascaper-app",
-    "storage_bucket": "aquascaper-app.appspot.com"
+    "project_number": "935494513466",
+    "project_id": "aquascaper-app-be1d5",
+    "storage_bucket": "aquascaper-app-be1d5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:490073709590:android:40ad129177d76dd4306937",
+        "mobilesdk_app_id": "1:935494513466:android:ee361dd85c28803f3d5603",
         "android_client_info": {
           "package_name": "com.example.aquascaper_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "490073709590-o5u1u42fn8t9l8ldbj0s6m47rer6o7h9.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.aquascaper_app",
-            "certificate_hash": "e8652a26601d84332b1d25cbe64b846bbf7a8ac3"
-          }
-        },
-        {
-          "client_id": "490073709590-2d47vv4cab0qbu6r5nbb9orfb9126hrn.apps.googleusercontent.com",
+          "client_id": "935494513466-n1thmjm6av6vu9ea9pllh2tk91mj931p.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBAYNvbxjRyqqh1aEeXrByEa6pdbOqCIcA"
+          "current_key": "AIzaSyCTzm2FZkw4EYUW7zUP-gr_hw0d3xFj8As"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "490073709590-2d47vv4cab0qbu6r5nbb9orfb9126hrn.apps.googleusercontent.com",
+              "client_id": "935494513466-n1thmjm6av6vu9ea9pllh2tk91mj931p.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
