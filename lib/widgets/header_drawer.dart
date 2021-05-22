@@ -1,9 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class HeaderDrawer extends StatelessWidget {
-  static CollectionReference users =
-      FirebaseFirestore.instance.collection('users');
+class HeaderDrawer extends StatefulWidget {
+      
+
+  @override
+  _HeaderDrawerState createState() => _HeaderDrawerState();
+}
+
+class _HeaderDrawerState extends State<HeaderDrawer> {
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +22,11 @@ class HeaderDrawer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text('Hai, '),
+           Text('')
           ],
         ),
       ),
     );
   }
 }
+

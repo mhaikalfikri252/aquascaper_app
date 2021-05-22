@@ -53,6 +53,10 @@ class AuthServices {
   }
 
   static Stream<User> get userStream => _auth.authStateChanges();
+
+  static Future<SignInSignUpResult> inputData() {
+    final User user = _auth.currentUser;
+  }
 }
 
 class SignInSignUpResult {
