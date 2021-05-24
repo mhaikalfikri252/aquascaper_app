@@ -10,90 +10,99 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Login'),
-            SizedBox(
-              height: 30,
-            ),
-            TextField(
-              controller: emailController,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Center(
+            child: ListView(
+              physics: BouncingScrollPhysics(),
+              clipBehavior: Clip.none,
+              shrinkWrap: true,
+              children: [
+                Text(
+                  'Login',
+                  textAlign: TextAlign.center,
                 ),
-                labelText: 'Email',
-                hintText: 'Email',
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            TextField(
-              obscureText: true,
-              controller: passwordController,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+                SizedBox(
+                  height: 30,
                 ),
-                labelText: 'Password',
-                hintText: 'Password',
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            InkWell(
-              onTap: () => Navigator.pushNamed(context, '/fps'),
-              child: Container(
-                margin: EdgeInsets.only(left: 235),
-                child: Text('Forgot Password ?'),
-              ),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Container(
-              height: 50,
-              width: 360,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
-                  elevation: 10,
-                  textStyle: TextStyle(color: Colors.white),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                TextField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    labelText: 'Email',
+                    hintText: 'Email',
                   ),
                 ),
-                child: Text(
-                  'Log In',
-                  style: TextStyle(fontSize: 16),
+                SizedBox(
+                  height: 20,
                 ),
-                onPressed: () async {
-                  await AuthServices.signIn(
-                    emailController.text.trim(),
-                    passwordController.text.trim(),
-                  );
-                },
-              ),
+                TextField(
+                  obscureText: true,
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    labelText: 'Password',
+                    hintText: 'Password',
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                InkWell(
+                  onTap: () => Navigator.pushNamed(context, '/fps'),
+                  child: Container(
+                    alignment: Alignment.centerRight,
+                    child: Text('Forgot Password?'),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Container(
+                  height: 50,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blue,
+                      elevation: 10,
+                      textStyle: TextStyle(color: Colors.white),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Text(
+                      'Log In',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    onPressed: () async {
+                      await AuthServices.signIn(
+                        emailController.text.trim(),
+                        passwordController.text.trim(),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 60,
+                ),
+                InkWell(
+                  onTap: () => Navigator.pushNamed(context, '/rgs'),
+                  child: Text(
+                    'Don\'t have an account? Register',
+                    textAlign: TextAlign.center,
+                  ),
+                )
+              ],
             ),
-            SizedBox(
-              height: 60,
-            ),
-            InkWell(
-              onTap: () => Navigator.pushNamed(context, '/rgs'),
-              child: Text(
-                'Don\'t have an account ? Register',
-              ),
-            )
-          ],
+          ),
         ),
       ),
     );
