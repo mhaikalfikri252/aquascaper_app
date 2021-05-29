@@ -1,4 +1,7 @@
+import 'package:aquascaper_app/services/auth_services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   @override
@@ -6,9 +9,9 @@ class ChangePasswordPage extends StatefulWidget {
 }
 
 class _ChangePasswordPageState extends State<ChangePasswordPage> {
-  TextEditingController oldpassController = TextEditingController();
-  TextEditingController newpassController = TextEditingController();
-  TextEditingController confirmpassController = TextEditingController();
+  TextEditingController currentPassController = TextEditingController();
+  TextEditingController newPassController = TextEditingController();
+  TextEditingController confirmPassController = TextEditingController();
 
   var _formKey = GlobalKey<FormState>();
 
@@ -16,6 +19,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+    User firebaseUser = Provider.of<User>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Change Password'),
@@ -24,80 +29,100 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
         padding: const EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
-          child: Column(
+          child: ListView(
+            physics: BouncingScrollPhysics(),
+            clipBehavior: Clip.none,
+            shrinkWrap: true,
             children: [
-              SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                obscureText: true,
-                controller: oldpassController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+              Column(
+                children: [
+                  SizedBox(
+                    height: 20,
                   ),
-                  labelText: 'Password',
-                  hintText: 'Password',
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                obscureText: true,
-                controller: newpassController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  labelText: 'Password',
-                  hintText: 'Password',
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                validator: (value) {
-                  return confirmpassController.text == value
-                      ? null
-                      : "Mohon validasi password Anda";
-                },
-                obscureText: true,
-                controller: confirmpassController,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  labelText: 'Password',
-                  hintText: 'Password',
-                ),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              Container(
-                height: 50,
-                width: 360,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
-                    elevation: 10,
-                    textStyle: TextStyle(color: Colors.white),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                  TextFormField(
+                    obscureText: true,
+                    controller: currentPassController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      labelText: 'Current password',
                     ),
                   ),
-                  child: Text(
-                    'Send Request',
-                    style: TextStyle(fontSize: 16),
+                  SizedBox(
+                    height: 20,
                   ),
-                  onPressed: () async {
-                    if (_formKey.currentState.validate()) {
-                      Navigator.pop(context);
-                    }
-                  },
-                ),
+                  TextFormField(
+                    obscureText: true,
+                    controller: newPassController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      labelText: 'New password',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    validator: (value) {
+                      return newPassController.text == value
+                          ? null
+                          : "Please validate your password";
+                    },
+                    obscureText: true,
+                    controller: confirmPassController,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      labelText: 'Confirm new password',
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Container(
+                    height: 50,
+                    width: 360,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        elevation: 10,
+                        textStyle: TextStyle(color: Colors.white),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      onPressed: () async {
+                        if (_formKey.currentState.validate()) {
+                          Result result = await AuthServices.changePassword(
+                            currentPassword: currentPassController.text,
+                            newPassword: newPassController.text,
+                          );
+
+                          switch (result.state) {
+                            case ResultState.success:
+                              Navigator.pop(context);
+                              break;
+                            case ResultState.failed:
+                              final snackBar = SnackBar(
+                                content: Text(result.message),
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                              break;
+                          }
+                        }
+                      },
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

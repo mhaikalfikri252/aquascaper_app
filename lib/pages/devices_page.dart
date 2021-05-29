@@ -1,16 +1,11 @@
 import 'package:aquascaper_app/widgets/card_one.dart';
 import 'package:aquascaper_app/widgets/card_two.dart';
-import 'package:aquascaper_app/widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
 
 class DevicesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Devices'),
-      ),
-      drawer: MainDrawer(),
       body: Container(
         margin: EdgeInsets.only(
           left: 1,

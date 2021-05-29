@@ -1,15 +1,16 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:aquascaper_app/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class HeaderDrawer extends StatefulWidget {
-      
+  final UserModel _userModel;
+
+  HeaderDrawer(this._userModel);
 
   @override
   _HeaderDrawerState createState() => _HeaderDrawerState();
 }
 
 class _HeaderDrawerState extends State<HeaderDrawer> {
-
   @override
   Widget build(BuildContext context) {
     return DrawerHeader(
@@ -22,11 +23,20 @@ class _HeaderDrawerState extends State<HeaderDrawer> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-           Text('')
+            Text(
+              widget._userModel.name,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline6
+                  .copyWith(color: Colors.white),
+            ),
+            Text(
+              widget._userModel.email,
+              style: TextStyle(color: Colors.white),
+            ),
           ],
         ),
       ),
     );
   }
 }
-

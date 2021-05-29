@@ -1,7 +1,8 @@
 import 'package:aquascaper_app/models/user_model.dart';
-import 'package:aquascaper_app/services/user_services.dart';
 import 'package:aquascaper_app/services/extensions.dart';
+import 'package:aquascaper_app/services/user_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 
 class AuthServices {
   static FirebaseAuth _auth = FirebaseAuth.instance;
@@ -57,6 +58,28 @@ class AuthServices {
   static Future<SignInSignUpResult> inputData() {
     final User user = _auth.currentUser;
   }
+
+  static Future<Result> changePassword({
+    @required String currentPassword,
+    @required String newPassword,
+  }) async {
+    try {
+      final User user = _auth.currentUser;
+
+      AuthCredential credential = EmailAuthProvider.credential(
+        email: user.email,
+        password: currentPassword,
+      );
+      UserCredential result =
+          await _auth.currentUser.reauthenticateWithCredential(credential);
+
+      await result.user.updatePassword(newPassword);
+      return Result.success();
+    } on FirebaseAuthException catch (e) {
+      print(e.code);
+      return Result.failed(message: e.message);
+    }
+  }
 }
 
 class SignInSignUpResult {
@@ -67,4 +90,25 @@ class SignInSignUpResult {
     this.user,
     this.message,
   });
+}
+
+enum ResultState { success, failed }
+
+class Result<T> {
+  final ResultState state;
+  final T data;
+  final String message;
+
+  Result(this.state, {this.data, this.message});
+
+  factory Result.success({T data, String message}) => Result(
+        ResultState.success,
+        data: data,
+        message: message,
+      );
+
+  factory Result.failed({String message}) => Result(
+        ResultState.failed,
+        message: message,
+      );
 }

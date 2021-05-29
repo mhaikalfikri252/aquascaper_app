@@ -1,9 +1,14 @@
+import 'package:aquascaper_app/models/user_model.dart';
 import 'package:aquascaper_app/services/auth_services.dart';
 import 'package:aquascaper_app/widgets/drawer_item.dart';
 import 'package:aquascaper_app/widgets/header_drawer.dart';
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
+  final UserModel _userModel;
+
+  MainDrawer(this._userModel);
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -12,11 +17,15 @@ class MainDrawer extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              HeaderDrawer(),
+              HeaderDrawer(_userModel),
               DrawerItem(
                 icon: Icons.edit,
                 text: 'Edit Profile',
-                onTap: () => Navigator.pushNamed(context, '/edit'),
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  '/edit',
+                  arguments: _userModel,
+                ),
               ),
               DrawerItem(
                 icon: Icons.lock,

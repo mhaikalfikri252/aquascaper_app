@@ -1,3 +1,4 @@
+import 'package:aquascaper_app/models/user_model.dart';
 import 'package:aquascaper_app/pages/auth/forgot_password_page.dart';
 import 'package:aquascaper_app/pages/auth/login_page.dart';
 import 'package:aquascaper_app/pages/auth/register_page.dart';
@@ -38,7 +39,9 @@ class MyApp extends StatelessWidget {
           '/help': (context) => HelpPage(),
           '/settings': (context) => SettingsPage(),
           '/change': (context) => ChangePasswordPage(),
-          '/edit': (context) => EditProfilePage(),
+          '/edit': (context) => EditProfilePage(
+                ModalRoute.of(context).settings.arguments as UserModel,
+              ),
           '/tmp': (context) => Temperature(),
           '/ppm': (context) => Ppm(),
           '/tur': (context) => Turbidity(),

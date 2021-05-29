@@ -21,4 +21,11 @@ class UserServices {
       name: snapshot.data()['name'],
     );
   }
+
+  static Stream<UserModel> getUserStream(String id) =>
+      _userCollection.doc(id).snapshots().map((snapshot) => UserModel(
+            id,
+            snapshot.data()['email'],
+            name: snapshot.data()['name'],
+          ));
 }
