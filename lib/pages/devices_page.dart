@@ -7,10 +7,6 @@ class DevicesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.only(
-          left: 1,
-          top: 10,
-        ),
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: ListView(

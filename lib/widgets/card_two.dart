@@ -15,9 +15,7 @@ class CardTwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 160,
-      width: 170,
+    return Expanded(
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
@@ -26,42 +24,40 @@ class CardTwo extends StatelessWidget {
             color: sideColor ?? Colors.blue,
           ),
         ),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 5,
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                left: 130,
-              ),
-              child: Icon(
-                Icons.lens,
-                size: 20,
-                color: roundColor,
-              ),
-            ),
-            Text(
-              txtTitle ?? "",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-            SizedBox(
-              height: 21,
-            ),
-            Column(
-              children: [
-                SmallButton('Auto'),
-                SizedBox(
-                  height: 12,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.centerRight,
+                child: Icon(
+                  Icons.lens,
+                  size: 20,
+                  color: roundColor,
                 ),
-                ManualButton('Manual'),
-              ],
-            )
-          ],
+              ),
+              Text(
+                txtTitle ?? "",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              Column(
+                children: [
+                  SmallButton('Auto'),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  ManualButton('Manual'),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

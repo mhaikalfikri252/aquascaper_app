@@ -14,14 +14,21 @@ import 'package:aquascaper_app/pages/drawer/settings_page.dart';
 import 'package:aquascaper_app/pages/home_page.dart';
 import 'package:aquascaper_app/services/auth_services.dart';
 import 'package:aquascaper_app/wrapper.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => MyApp(), // Wrap your app
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -31,6 +38,8 @@ class MyApp extends StatelessWidget {
       value: AuthServices.userStream,
       initialData: null,
       child: MaterialApp(
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
         home: Wrapper(),
         initialRoute: '/',
         routes: {
