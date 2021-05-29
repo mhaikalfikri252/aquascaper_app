@@ -83,10 +83,17 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(fontSize: 16),
                     ),
                     onPressed: () async {
-                      await AuthServices.signIn(
+                      SignInSignUpResult result = await AuthServices.signIn(
                         emailController.text.trim(),
                         passwordController.text.trim(),
                       );
+
+                      if (result.message != null) {
+                        final snackBar = SnackBar(
+                          content: Text(result.message),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      }
                     },
                   ),
                 ),

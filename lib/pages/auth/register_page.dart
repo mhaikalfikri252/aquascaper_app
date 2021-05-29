@@ -119,7 +119,8 @@ class _RegisterPageState extends State<RegisterPage> {
                               duration: Duration(milliseconds: 1500),
                               flushbarPosition: FlushbarPosition.TOP,
                               backgroundColor: Color(0xFFFF5C83),
-                              message: 'Missmatch password and confirmed password',
+                              message:
+                                  'Missmatch password and confirmed password',
                             )..show(context);
                           } else if (passwordController.text.length < 6) {
                             Flushbar(
@@ -137,11 +138,22 @@ class _RegisterPageState extends State<RegisterPage> {
                               message: 'Wrong formatted email address',
                             )..show(context);
                           } else {
-                            await AuthServices.signUp(
+                            SignInSignUpResult result =
+                                await AuthServices.signUp(
                               emailController.text,
                               passwordController.text,
                               nameController.text,
                             );
+
+                            if (result.user != null) {
+                              Navigator.pop(context);
+                            } else {
+                              final snackBar = SnackBar(
+                                content: Text(result.message),
+                              );
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            }
                           }
                         },
                       ),
