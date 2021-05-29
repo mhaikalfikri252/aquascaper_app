@@ -1,7 +1,5 @@
 import 'package:aquascaper_app/services/auth_services.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   @override
@@ -19,14 +17,12 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
 
   @override
   Widget build(BuildContext context) {
-    User firebaseUser = Provider.of<User>(context, listen: false);
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Change Password'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: ListView(
@@ -36,9 +32,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             children: [
               Column(
                 children: [
-                  SizedBox(
-                    height: 20,
-                  ),
                   TextFormField(
                     obscureText: true,
                     controller: currentPassController,
@@ -50,7 +43,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 16,
                   ),
                   TextFormField(
                     obscureText: true,
@@ -63,7 +56,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 16,
                   ),
                   TextFormField(
                     validator: (value) {
@@ -85,7 +78,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   ),
                   Container(
                     height: 50,
-                    width: 360,
+                    width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: Colors.blue,
