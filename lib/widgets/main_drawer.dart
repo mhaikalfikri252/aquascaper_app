@@ -52,13 +52,40 @@ class MainDrawer extends StatelessWidget {
                 icon: Icons.exit_to_app,
                 text: 'Logout',
                 onTap: () {
-                  AuthServices.signOut();
+                  _showLogoutDialog(context);
                 },
               ),
             ],
           ),
         ],
       ),
+    );
+  }
+
+  Future<void> _showLogoutDialog(BuildContext context) async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Logout'),
+          content: Text('Are you sure want to logout?'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Yes'),
+              onPressed: () {
+                AuthServices.signOut();
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

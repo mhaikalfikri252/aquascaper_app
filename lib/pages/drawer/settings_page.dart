@@ -23,7 +23,7 @@ class _SettingsPageState extends State<SettingsPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Matikan semua notifikasi',
+                  'Turn off all notifications',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.black,
@@ -51,7 +51,7 @@ class _SettingsPageState extends State<SettingsPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Notifikasi jika alat tidak terhubung',
+                  'Notify when device is not connected',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.black,
