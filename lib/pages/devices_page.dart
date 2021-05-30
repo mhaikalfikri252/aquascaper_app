@@ -10,26 +10,31 @@ class DevicesPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: ListView(
+            clipBehavior: Clip.none,
             shrinkWrap: true,
             children: [
               Column(
                 children: [
                   Row(
                     children: [
-                      CardOne(
-                        bgColor: Colors.red,
-                        txtTitle: 'Temperature',
-                        txtDesc: '22°C',
-                        page: '/tmp',
+                      Expanded(
+                        child: CardOne(
+                          bgColor: Colors.red,
+                          txtTitle: 'Temperature',
+                          txtDesc: '22°C',
+                          page: '/tmp',
+                        ),
                       ),
                       SizedBox(
                         width: 10,
                       ),
-                      CardOne(
-                        bgColor: Colors.orange,
-                        txtTitle: 'pH Meter',
-                        txtDesc: '6,0',
-                        page: '/phm',
+                      Expanded(
+                        child: CardOne(
+                          bgColor: Colors.orange,
+                          txtTitle: 'pH Meter',
+                          txtDesc: '6,0',
+                          page: '/phm',
+                        ),
                       ),
                     ],
                   ),
@@ -38,20 +43,24 @@ class DevicesPage extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      CardOne(
-                        bgColor: Colors.greenAccent[700],
-                        txtTitle: 'Turbidity',
-                        txtDesc: '20NTU',
-                        page: '/tur',
+                      Expanded(
+                        child: CardOne(
+                          bgColor: Colors.greenAccent[700],
+                          txtTitle: 'Turbidity',
+                          txtDesc: '20NTU',
+                          page: '/tur',
+                        ),
                       ),
                       SizedBox(
                         width: 10,
                       ),
-                      CardOne(
-                        bgColor: Colors.blue,
-                        txtTitle: 'PPM',
-                        txtDesc: '40',
-                        page: '/ppm',
+                      Expanded(
+                        child: CardOne(
+                          bgColor: Colors.blue,
+                          txtTitle: 'PPM',
+                          txtDesc: '40',
+                          page: '/ppm',
+                        ),
                       ),
                     ],
                   ),
@@ -60,30 +69,32 @@ class DevicesPage extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      CardTwo(
-                        sideColor: Colors.blueGrey,
-                        txtTitle: 'LED Lamp',
-                        roundColor: Colors.yellow,
+                      Expanded(
+                        child: CardTwo(
+                          sideColor: Colors.blueGrey,
+                          txtTitle: 'LED Lamp',
+                          roundColor: Colors.yellow,
+                        ),
                       ),
                       SizedBox(
                         width: 10,
                       ),
-                      CardTwo(
-                        txtTitle: 'Fan',
-                        sideColor: Colors.teal,
-                        roundColor: Colors.yellow,
+                      Expanded(
+                        child: CardTwo(
+                          txtTitle: 'Fan',
+                          sideColor: Colors.teal,
+                          roundColor: Colors.yellow,
+                        ),
                       ),
                     ],
                   ),
                   SizedBox(
                     height: 10,
                   ),
-                  Center(
-                    child: CardTwo(
-                      txtTitle: 'Selenoid',
-                      sideColor: Colors.lightBlue,
-                      roundColor: Colors.yellow,
-                    ),
+                  CardTwo(
+                    txtTitle: 'Selenoid',
+                    sideColor: Colors.lightBlue,
+                    roundColor: Colors.yellow,
                   ),
                   SizedBox(
                     height: 30,

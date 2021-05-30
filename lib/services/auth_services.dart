@@ -1,6 +1,7 @@
 import 'package:aquascaper_app/models/user_model.dart';
 import 'package:aquascaper_app/services/extensions.dart';
 import 'package:aquascaper_app/services/user_services.dart';
+import 'package:aquascaper_app/utils/Constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
@@ -23,7 +24,7 @@ class AuthServices {
 
       return SignInSignUpResult(user: user);
     } on FirebaseAuthException catch (e) {
-      return SignInSignUpResult(message: e.toString());
+      return SignInSignUpResult(message: e.message);
     }
   }
 
@@ -41,7 +42,15 @@ class AuthServices {
 
       return SignInSignUpResult(user: user);
     } on FirebaseAuthException catch (e) {
-      return SignInSignUpResult(message: e.toString());
+      if (e.code == FirebaseAuthExceptionCode.USER_NOT_FOUND) {
+        return SignInSignUpResult(message: "Invalid email");
+      }
+
+      if (e.code == FirebaseAuthExceptionCode.WRONG_PASSWORD) {
+        return SignInSignUpResult(message: "Invalid password");
+      }
+
+      return SignInSignUpResult(message: e.message);
     }
   }
 
@@ -77,6 +86,10 @@ class AuthServices {
       return Result.success();
     } on FirebaseAuthException catch (e) {
       print(e.code);
+      if (e.code == FirebaseAuthExceptionCode.WRONG_PASSWORD) {
+        return Result.failed(message: "Invalid current password");
+      }
+
       return Result.failed(message: e.message);
     }
   }

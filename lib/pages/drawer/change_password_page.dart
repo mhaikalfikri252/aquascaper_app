@@ -41,6 +41,11 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                       ),
                       labelText: 'Current password',
                     ),
+                    validator: (value) {
+                      return value.isEmpty
+                          ? "This field cannot be empty"
+                          : null;
+                    },
                   ),
                   SizedBox(
                     height: 16,
@@ -54,16 +59,16 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                       ),
                       labelText: 'New password',
                     ),
+                    validator: (value) {
+                      return value.isEmpty
+                          ? "This field cannot be empty"
+                          : null;
+                    },
                   ),
                   SizedBox(
                     height: 16,
                   ),
                   TextFormField(
-                    validator: (value) {
-                      return newPassController.text == value
-                          ? null
-                          : "Please validate your password";
-                    },
                     obscureText: true,
                     controller: confirmPassController,
                     decoration: InputDecoration(
@@ -72,6 +77,17 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                       ),
                       labelText: 'Confirm new password',
                     ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "This field cannot be empty";
+                      }
+
+                      if (newPassController.text != value) {
+                        return "Please validate your password";
+                      }
+
+                      return null;
+                    },
                   ),
                   SizedBox(
                     height: 40,

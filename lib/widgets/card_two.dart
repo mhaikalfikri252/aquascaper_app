@@ -15,49 +15,47 @@ class CardTwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-          side: BorderSide(
-            width: 3,
-            color: sideColor ?? Colors.blue,
-          ),
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+        side: BorderSide(
+          width: 3,
+          color: sideColor ?? Colors.blue,
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.centerRight,
-                child: Icon(
-                  Icons.lens,
-                  size: 20,
-                  color: roundColor,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.centerRight,
+              child: Icon(
+                Icons.lens,
+                size: 20,
+                color: roundColor,
+              ),
+            ),
+            Text(
+              txtTitle ?? "",
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            SizedBox(
+              height: 24,
+            ),
+            Column(
+              children: [
+                SmallButton('Auto'),
+                SizedBox(
+                  height: 8,
                 ),
-              ),
-              Text(
-                txtTitle ?? "",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
-              ),
-              SizedBox(
-                height: 24,
-              ),
-              Column(
-                children: [
-                  SmallButton('Auto'),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  ManualButton('Manual'),
-                ],
-              )
-            ],
-          ),
+                ManualButton('Manual'),
+              ],
+            )
+          ],
         ),
       ),
     );

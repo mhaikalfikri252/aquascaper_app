@@ -16,13 +16,11 @@ class _SettingsPageState extends State<SettingsPage> {
         title: Text('Settings'),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(
-          left: 20,
-          top: 30,
-        ),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Matikan semua notifikasi',
@@ -31,14 +29,11 @@ class _SettingsPageState extends State<SettingsPage> {
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(
-                  width: 140,
-                ),
                 Switch(
                   value: _isSwitchedOne,
                   onChanged: (value) {
                     setState(
-                      () {
+                          () {
                         _isSwitchedOne = value;
                         print(_isSwitchedOne);
                       },
@@ -53,6 +48,7 @@ class _SettingsPageState extends State<SettingsPage> {
               height: 10,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Notifikasi jika alat tidak terhubung',
@@ -61,14 +57,11 @@ class _SettingsPageState extends State<SettingsPage> {
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(
-                  width: 86,
-                ),
                 Switch(
                   value: _isSwitchedTwo,
                   onChanged: (value) {
                     setState(
-                      () {
+                          () {
                         _isSwitchedTwo = value;
                         print(_isSwitchedTwo);
                       },
