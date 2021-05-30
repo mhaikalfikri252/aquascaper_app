@@ -68,7 +68,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     widget.userModel.email,
                     name: _nameController.text,
                   );
-                  UserServices.updateUser(editedUserModel);
+                  UserServices.updateUserProfile(editedUserModel);
                   final snackBar = SnackBar(
                     content: Text("Success"),
                   );

@@ -5,9 +5,9 @@ import 'package:aquascaper_app/widgets/header_drawer.dart';
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
-  final UserModel _userModel;
+  final AsyncSnapshot<UserModel> _userModelSnapshot;
 
-  MainDrawer(this._userModel);
+  MainDrawer(this._userModelSnapshot);
 
   @override
   Widget build(BuildContext context) {
@@ -17,15 +17,17 @@ class MainDrawer extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              HeaderDrawer(_userModel),
+              HeaderDrawer(_userModelSnapshot),
               DrawerItem(
                 icon: Icons.edit,
                 text: 'Edit Profile',
-                onTap: () => Navigator.pushNamed(
-                  context,
-                  '/edit',
-                  arguments: _userModel,
-                ),
+                onTap: () => _userModelSnapshot.hasData
+                    ? Navigator.pushNamed(
+                        context,
+                        '/edit',
+                        arguments: _userModelSnapshot.data,
+                      )
+                    : {},
               ),
               DrawerItem(
                 icon: Icons.lock,

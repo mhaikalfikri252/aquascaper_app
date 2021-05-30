@@ -15,10 +15,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  static List<Widget> _navigation = <Widget>[
-    DevicesPage(),
-    AlertPage(),
-  ];
+  Widget _getNavigationPage(int index, AsyncSnapshot<UserModel> userSnapshot) {
+    List<Widget> pages = <Widget>[
+      DevicesPage(userSnapshot),
+      AlertPage(),
+    ];
+
+    return pages[index];
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -33,12 +37,18 @@ class _HomePageState extends State<HomePage> {
     return StreamBuilder<UserModel>(
       stream: UserServices.getUserStream(firebaseUser.uid),
       builder: (context, AsyncSnapshot<UserModel> snapshot) {
+        if (snapshot.hasError) {
+          final snackBar = SnackBar(
+            content: Text("Something went wrong"),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        }
         return Scaffold(
           appBar: AppBar(
             title: Text(_selectedIndex == 0 ? 'Devices' : 'Alert'),
           ),
-          drawer: MainDrawer(snapshot.data),
-          body: _navigation[_selectedIndex],
+          drawer: MainDrawer(snapshot),
+          body: _getNavigationPage(_selectedIndex, snapshot),
           bottomNavigationBar: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(

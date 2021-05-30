@@ -20,7 +20,7 @@ class AuthServices {
         name: name,
       );
 
-      await UserServices.updateUser(user);
+      await UserServices.initUser(user);
 
       return SignInSignUpResult(user: user);
     } on FirebaseAuthException catch (e) {

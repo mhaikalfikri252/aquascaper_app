@@ -1,8 +1,13 @@
+import 'package:aquascaper_app/models/user_model.dart';
 import 'package:aquascaper_app/widgets/card_one.dart';
 import 'package:aquascaper_app/widgets/card_two.dart';
 import 'package:flutter/material.dart';
 
 class DevicesPage extends StatelessWidget {
+  final AsyncSnapshot<UserModel> _userModelSnapshot;
+
+  DevicesPage(this._userModelSnapshot);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +26,9 @@ class DevicesPage extends StatelessWidget {
                         child: CardOne(
                           bgColor: Colors.red,
                           txtTitle: 'Temperature',
-                          txtDesc: '22°C',
+                          txtDesc: _userModelSnapshot.hasData
+                              ? '${_userModelSnapshot.data.temperature}°C'
+                              : '-',
                           page: '/tmp',
                         ),
                       ),
@@ -32,7 +39,9 @@ class DevicesPage extends StatelessWidget {
                         child: CardOne(
                           bgColor: Colors.orange,
                           txtTitle: 'pH Meter',
-                          txtDesc: '6,0',
+                          txtDesc: _userModelSnapshot.hasData
+                              ? _userModelSnapshot.data.ph.toString()
+                              : '-',
                           page: '/phm',
                         ),
                       ),
@@ -47,7 +56,9 @@ class DevicesPage extends StatelessWidget {
                         child: CardOne(
                           bgColor: Colors.greenAccent[700],
                           txtTitle: 'Turbidity',
-                          txtDesc: '20NTU',
+                          txtDesc: _userModelSnapshot.hasData
+                              ? '${_userModelSnapshot.data.turbidity}NTU'
+                              : '-',
                           page: '/tur',
                         ),
                       ),
@@ -58,7 +69,9 @@ class DevicesPage extends StatelessWidget {
                         child: CardOne(
                           bgColor: Colors.blue,
                           txtTitle: 'PPM',
-                          txtDesc: '40',
+                          txtDesc: _userModelSnapshot.hasData
+                              ? _userModelSnapshot.data.ppm.toString()
+                              : '-',
                           page: '/ppm',
                         ),
                       ),

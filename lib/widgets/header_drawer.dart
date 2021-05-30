@@ -2,9 +2,9 @@ import 'package:aquascaper_app/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class HeaderDrawer extends StatefulWidget {
-  final UserModel _userModel;
+  final AsyncSnapshot<UserModel> _userModelSnapshot;
 
-  HeaderDrawer(this._userModel);
+  HeaderDrawer(this._userModelSnapshot);
 
   @override
   _HeaderDrawerState createState() => _HeaderDrawerState();
@@ -17,26 +17,32 @@ class _HeaderDrawerState extends State<HeaderDrawer> {
       decoration: BoxDecoration(
         color: Colors.blue,
       ),
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text(
-              widget._userModel.name,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6
-                  .copyWith(color: Colors.white),
-            ),
-            Text(
-              widget._userModel.email,
-              style: TextStyle(color: Colors.white),
-            ),
-          ],
-        ),
-      ),
+      child: widget._userModelSnapshot.hasError
+          ? Container()
+          : widget._userModelSnapshot.connectionState == ConnectionState.waiting
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        widget._userModelSnapshot.data.name,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6
+                            .copyWith(color: Colors.white),
+                      ),
+                      Text(
+                        widget._userModelSnapshot.data.email,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
     );
   }
 }
